@@ -1,0 +1,47 @@
+<!--
+============================================
+; Title:  kovar-exercise-4.3.js
+; Author: Sarah Kovar
+; Date:  15 March 2020
+; Description: HTTP PUT and DELETE
+;===========================================
+
+
+// Require statement that imports the header.js file from my root directory
+const header = require('../../kovar-header.js');
+
+// Call the console.log() function and output a well-formatted header
+console.log(header.display('Sarah', 'Kovar', 'Exercise 4.3'));-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment name</title>
+
+    <!-- jQuery reference -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+  <button id='delete-button'>DELETE</button>
+<script>
+
+    $(function() {
+      $('#delete-button').click(function () {
+        $.ajax({
+          url: 'http://httpbin.org/delete',
+          dataType: 'json',
+          type: 'DELETE',
+          data: {firstName: 'Sally', lastName: 'Field', address: '4895 North Cumberland Drive'},
+          success: function (data, status) {
+            console.log('First Name: ' + data.form.firstName + '\nLast Name: ' + data.form.lastName + '\nAddress: ' + data.form.address + '\nStatus: '+ status);
+          }
+        })
+      })
+    });
+
+</script>
+
+</body>
+</html>
