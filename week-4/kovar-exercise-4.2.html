@@ -1,0 +1,40 @@
+<!--
+============================================
+; Title:  kovar-exercise-4.2.js
+; Author: Sarah Kovar
+; Date:  15 March 2020
+; Description: HTTP GET and POST
+;===========================================
+
+
+// Require statement that imports the header.js file from my root directory
+const header = require('../../kovar-header.js');
+
+// Call the console.log() function and output a well-formatted header
+console.log(header.display('Sarah', 'Kovar', 'Exercise 4.2'));-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 4.2 - HTTP GET and POST</title>
+
+    <!-- jQuery reference -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+  <button id="get-button">GET</button>
+<script>
+
+    $(function() {
+      $('#get-button').click(function () {
+         $.get('https://dog.ceo/api/breeds/image/random', function (data, status) {
+           console.log('Data: ' + JSON.stringify(data) + '\nStatus: ' + status);
+        });
+    });
+    });
+</script>
+
+</body>
+</html>
