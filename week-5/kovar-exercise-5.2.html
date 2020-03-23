@@ -1,0 +1,43 @@
+<!--
+============================================
+; Title:  kovar-exercise-5.2.html
+; Author: Sarah Kovar
+; Date:  22 March 2020
+; Description: Use of a proxy pattern.
+;===========================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 5.2 - The Proxy Pattern</title>
+
+    <!-- jquery Reference Library -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body class="bg-success">
+  <h2>Exercise 5.2 - The Proxy Pattern</h2>
+  <button id="test" class="bg-dark text-white">Click Me!</button>
+<script>
+
+  var employee = {
+    firstName: "Sally",
+    lastName: "Field",
+    employeeID: 513578,
+    display: function() {
+      $("#test").html("");
+      $("#test").append("<div><p>First Name: " + this.firstName + "</p>" + "<p>Last Name: " + this.lastName + "</p>" + "<p>Employee ID: " + this.employeeID + "</p></div>");
+    }
+  }
+   
+
+      $("#test").click($.proxy(employee, "display"));
+    
+</script>
+
+
+</body>
+</html>
+
