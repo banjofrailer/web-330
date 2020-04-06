@@ -1,0 +1,66 @@
+<!--
+============================================
+; Title:  kovar-exercise-7.2.html
+; Author: Sarah Kovar
+; Date:  5 April 2020
+; Description: Knockout "if" Binding
+;===========================================
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Exercise 7.2</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- JavaScript Libraries -->
+    <script src="../knockout-3.5.1.js"></script>
+</head>
+<body>
+
+    <div role="main" class="container">
+      <h2>Exercise 7.2</h2>
+      <div class="form-group">
+        <label for="txtFirstName">First Name: </label>
+        <input type="text" data-bind="value: firstName" class="form-control" id="txtFirstName">
+      </div>
+
+      <div data-bind="if: displayFirstName">
+        <div class="form-group">
+          <label for="txtLastName">Last Name: </label>
+          <input type="text" data-bind="value: lastName" class="form-control" id="txtLastName">
+        </div>
+      </div>
+
+      <div data-bind="if:lastName">
+        <h2><span id="personOutput" class="alert-success" data-bind="text: displayLastName"></span></h2>
+      </div>
+    </div>
+
+<script>
+  function personViewModel() {
+    this.firstName = ko.observable("");
+    this.lastName = ko.observable("");
+
+    this.displayFirstName = ko.pureComputed(function() {
+      return this.firstName();
+    }, this);
+
+    this.displayLastName = ko.pureComputed(function() {
+
+      return this.firstName() + " " + this.lastName();
+    }, this);
+  }
+
+  ko.applyBindings(new personViewModel());
+</script>
+
+</body>
+</html>
